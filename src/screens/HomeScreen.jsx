@@ -22,7 +22,6 @@ const HomeScreen = () => {
                     <Col md={4}>
                         <Pizza lapizza={pizza}/>
                     </Col>
-
                 ))}
             </Row>
         </Container>
