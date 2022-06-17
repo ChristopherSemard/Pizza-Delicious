@@ -16,8 +16,8 @@ const NavBar = () => {
             <LinkContainer to="/login">
                 <Nav.Link>Login</Nav.Link>
             </LinkContainer>
-            <LinkContainer to="/panier">
-                <Nav.Link>Panier</Nav.Link>
+            <LinkContainer to="/cart">
+                <Nav.Link>Cart</Nav.Link>
             </LinkContainer>
           </Nav>
         </Navbar.Collapse>

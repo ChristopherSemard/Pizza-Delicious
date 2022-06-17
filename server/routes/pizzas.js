@@ -10,4 +10,13 @@ router.get("/", function (req, res) {
     });
 });
 
+/* GET users listing. */
+router.get("/:id", function (req, res) {
+    var db = req.db;
+    var pizzaToFind = req.params.id;
+    var collection = db.get("pizzas");
+    collection.findOne({ name: pizzaToFind }, {}, function (e, docs) {
+        res.json(docs);
+    });
+});
 module.exports = router;

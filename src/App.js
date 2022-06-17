@@ -7,7 +7,8 @@ import Contact from "./components/Contact";
 import Policy from "./components/Policy";
 import NavBar from "./components/NavBar";
 import HomeScreen from "./screens/HomeScreen";
-import Cart from "./components/Cart";
+import CartScreen from "./screens/CartScreen";
+import Login from "./components/Login";
 
 function App() {
     return (
@@ -19,6 +20,8 @@ function App() {
                 <Route path="/About" element={<About />} />
                 <Route path="/Contact" element={<Contact />} />
                 <Route path="/Policy" element={<Policy />} />
+                <Route path="/Cart" element={<CartScreen />} />
+                <Route path="/Login" element={<Login />} />
             </Routes>
         </BrowserRouter>
     );
