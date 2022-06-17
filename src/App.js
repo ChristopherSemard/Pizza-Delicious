@@ -7,6 +7,7 @@ import Contact from "./components/Contact";
 import Policy from "./components/Policy";
 import NavBar from "./components/NavBar";
 import HomeScreen from "./screens/HomeScreen";
+import Cart from "./components/Cart";
 
 function App() {
     return (

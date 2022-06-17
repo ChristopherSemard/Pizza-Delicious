@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { Card, Button, Row, Col, Modal } from "react-bootstrap";
 
 
@@ -9,6 +9,38 @@ const Pizza = (props) => {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+    const addCart = () => {
+        let actualCart = JSON.parse(localStorage.getItem('cart'))
+        const alreadyIn = actualCart.find(
+            product => product.name === props.lapizza.name && product.varient === taille
+        );
+        if (alreadyIn){
+            let newQuantity = parseInt(quantite) + parseInt(alreadyIn.quantity);
+            alreadyIn.quantity = newQuantity
+            localStorage.setItem("cart", JSON.stringify(actualCart));
+            let newLocalCart = JSON.parse(localStorage.getItem('cart'))
+        }
+        else{
+            let product = {
+                name : props.lapizza.name,
+                varient : taille,
+                quantity : parseInt(quantite),           
+            }
+            let newCart = [...actualCart, product]
+            localStorage.setItem('cart', JSON.stringify(newCart))
+            let newLocalCart = JSON.parse(localStorage.getItem('cart'))
+        }
+            
+    }
+    
+    
+
+    useEffect(() => {
+        let actualCart = localStorage.getItem('cart')
+        if (!actualCart){
+            localStorage.setItem("cart", JSON.stringify([]));
+        }
+    }, [])
 
     return (
         <>
@@ -42,7 +74,7 @@ const Pizza = (props) => {
                             </p>
                         </Col>
                         <Col md={6}>
-                            <Button className='bg-warning text-light'>Add</Button>
+                            <Button className='bg-warning text-light' onClick={addCart}>Add</Button>
                         </Col>
                     </Row>
                     <Row>
