@@ -1,3 +1,7 @@
+# Pizzeria
+
+Site e-commerce de pizzeria utilisant MongoDB pour la base de données, un back-end via Express JS utilisé en API et un front-end en React et React Bootstrap.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
