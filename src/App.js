@@ -9,6 +9,7 @@ import NavBar from "./components/NavBar";
 import HomeScreen from "./screens/HomeScreen";
 import CartScreen from "./screens/CartScreen";
 import Login from "./components/Login";
+import OrderScreen from "./screens/OrderScreen";
 
 function App() {
     return (
@@ -22,6 +23,7 @@ function App() {
                 <Route path="/Policy" element={<Policy />} />
                 <Route path="/Cart" element={<CartScreen />} />
                 <Route path="/Login" element={<Login />} />
+                <Route path="/Order" element={<OrderScreen />} />
             </Routes>
         </BrowserRouter>
     );

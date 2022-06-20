@@ -3,29 +3,59 @@ import { Card, Button, Form } from 'react-bootstrap'
 import { BsFillTrashFill } from "react-icons/bs";
 import axios from 'axios';
 
-const Product = (props) => {
+function Product(props) {
+    // console.log(props.product);
 
+    const[bidon, setBidon] = useState(0);
     const[infosPizza, setInfosPizza] = useState([]);
-    const[quantite, setQuantite] = useState(0);
+    const[quantity, setQuantity] = useState(props.product.quantity);
+
   
-    const updateProduct = () => {
+    const updateProduct = (selectedQuantity) => {
+        setQuantity(parseInt(selectedQuantity))
         let actualCart = JSON.parse(localStorage.getItem('cart'))
         const alreadyIn = actualCart.find(
             product => product.name === props.product.name && product.varient === props.product.varient
         );
-        console.log("salut");
+        alreadyIn.quantity = parseInt(selectedQuantity)
+        localStorage.setItem("cart", JSON.stringify(actualCart));
+        let newLocalCart = JSON.parse(localStorage.getItem('cart'))
+        console.log(newLocalCart);
     }
+
+    
+const deleteProduct = (event) => {
+    let target = event.target
+    if (target.childNodes.length == 0){
+      target = event.target.parentNode
+    }
+    let actualCart = JSON.parse(localStorage.getItem('cart'))
+    const productToDelete = actualCart.find(
+        product => product.name === target.dataset.pizza && product.varient === target.dataset.varient
+    );
+    console.log(productToDelete);        
+    const newCart = actualCart.filter(
+        product => product !== productToDelete
+    );
+    localStorage.setItem("cart", JSON.stringify(newCart));
+    let newLocalCart = JSON.parse(localStorage.getItem('cart'))
+  
+    props.handleClick(newLocalCart)
+    setBidon(bidon + 1)
+  };
 
     useEffect(() => {
         const getPizza = async () => {
-            
             const getPizzaData = await axios('http://localhost:8080/pizzas/'+props.product.name)
             setInfosPizza(getPizzaData.data)
-            console.log(getPizzaData.data)
         }
         getPizza()
-    }, [])
+
+    }, [props])
     
+    useEffect(() => {
+        setBidon(props.stateBidon)
+    }, [])
 
   return (
     <>
@@ -38,14 +68,15 @@ const Product = (props) => {
                 </Card.Text>
             </Card.Body>
             <Card.Body>
-                <Form.Select aria-label="Default select example" value={props.product.quantity} onChange={updateProduct}>
+                <Form.Select aria-label="Default select example" value={quantity} onChange={(e) => updateProduct(e.target.value)}>
                     {[ ...Array(10).keys()].map((v,i) => (
                         <option value={i+1}>{i+1}</option>
                     ))}
                 </Form.Select>
-                <Button variant="danger"><BsFillTrashFill/></Button>
+                    <Button variant="danger" data-pizza={props.product.name} data-varient={props.product.varient} onClick={event => deleteProduct(event)}><BsFillTrashFill data-pizza={props.product.name} data-varient={props.product.varient} /></Button>
+
                 <Card.Text>
-                    {infosPizza.prices[0][props.product.varient] /** props.product.quantity € */}
+                    {infosPizza.prices ? infosPizza.prices[0][props.product.varient] * quantity+ " €" : '' }
                 </Card.Text>
             </Card.Body>
         </Card>

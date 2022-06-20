@@ -18,17 +18,16 @@ const Pizza = (props) => {
             let newQuantity = parseInt(quantite) + parseInt(alreadyIn.quantity);
             alreadyIn.quantity = newQuantity
             localStorage.setItem("cart", JSON.stringify(actualCart));
-            let newLocalCart = JSON.parse(localStorage.getItem('cart'))
         }
         else{
             let product = {
                 name : props.lapizza.name,
                 varient : taille,
-                quantity : parseInt(quantite),           
+                quantity : parseInt(quantite), 
+                _id : props.lapizza._id,          
             }
             let newCart = [...actualCart, product]
             localStorage.setItem('cart', JSON.stringify(newCart))
-            let newLocalCart = JSON.parse(localStorage.getItem('cart'))
         }
             
     }
