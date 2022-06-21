@@ -19,7 +19,7 @@ const HomeScreen = () => {
         <Container>
             <Row>
                 { AllPizzas.map ( (pizza, i) => (
-                    <Col md={4} >
+                    <Col md={4}  key={i}  >
                         <Pizza lapizza={pizza}/>
                     </Col>
                 ))}

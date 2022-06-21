@@ -6,7 +6,7 @@ import axios from 'axios';
 function Product(props) {
     // console.log(props.product);
 
-    const[bidon, setBidon] = useState(0);
+    
     const[infosPizza, setInfosPizza] = useState([]);
     const[quantity, setQuantity] = useState(props.product.quantity);
 
@@ -19,8 +19,7 @@ function Product(props) {
         );
         alreadyIn.quantity = parseInt(selectedQuantity)
         localStorage.setItem("cart", JSON.stringify(actualCart));
-        let newLocalCart = JSON.parse(localStorage.getItem('cart'))
-        console.log(newLocalCart);
+        props.trigger()
     }
 
     
@@ -41,7 +40,6 @@ const deleteProduct = (event) => {
     let newLocalCart = JSON.parse(localStorage.getItem('cart'))
   
     props.handleClick(newLocalCart)
-    setBidon(bidon + 1)
   };
 
     useEffect(() => {
@@ -53,9 +51,6 @@ const deleteProduct = (event) => {
 
     }, [props])
     
-    useEffect(() => {
-        setBidon(props.stateBidon)
-    }, [])
 
   return (
     <>
@@ -70,7 +65,7 @@ const deleteProduct = (event) => {
             <Card.Body>
                 <Form.Select aria-label="Default select example" value={quantity} onChange={(e) => updateProduct(e.target.value)}>
                     {[ ...Array(10).keys()].map((v,i) => (
-                        <option value={i+1}>{i+1}</option>
+                        <option  key={i} value={i+1}>{i+1}</option>
                     ))}
                 </Form.Select>
                     <Button variant="danger" data-pizza={props.product.name} data-varient={props.product.varient} onClick={event => deleteProduct(event)}><BsFillTrashFill data-pizza={props.product.name} data-varient={props.product.varient} /></Button>

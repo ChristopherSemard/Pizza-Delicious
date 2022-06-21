@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react'
 import { Card, Button, Row, Col, Modal } from "react-bootstrap";
 
 
+
 const Pizza = (props) => {
     const[taille, setTaille] = useState('small');
     const[quantite, setQuantite] = useState(1);
@@ -51,8 +52,8 @@ const Pizza = (props) => {
                         <Col md={6}>
                             <h6>Taille</h6>
                             <select value={taille} onChange={(e) => setTaille(e.target.value)}>
-                                {props.lapizza.varients.map(taille => (
-                                    <option value={taille}>{taille}</option>
+                                {props.lapizza.varients.map((taille,i) => (
+                                    <option key={i}  value={taille}>{taille}</option>
                                 ))}
                             </select>
                         </Col>
@@ -60,7 +61,7 @@ const Pizza = (props) => {
                             <h6>Quantité</h6>
                             <select value={quantite} onChange={(e) => setQuantite(e.target.value)}>
                                 {[ ...Array(10).keys()].map((v,i) => (
-                                    <option value={i+1}>{i+1}</option>
+                                    <option key={i} value={i+1}>{i+1}</option>
                                 ))}
                             </select>
                         </Col>
