@@ -7,7 +7,7 @@ const OrderScreen = () => {
 
     const[infosPizzas, setInfosPizzas] = useState([])
     const[cart, setCart] = useState([]);
-    const[total, setTotal] = useState(0);
+    const[total, setTotal] = useState(null);
     const[bidon, setBidon] = useState(0);
 
     useEffect(() => {
@@ -33,10 +33,9 @@ const OrderScreen = () => {
             let newCart = [];
           for (const product of actualCart) {
             const productDatas = infosPizzas.find(
-              pizza => pizza.name == product.name );
+              pizza => pizza.name === product.name );
               totalAPayer += productDatas.prices[0][product.varient] * parseInt(product.quantity);
               product['prix'] = productDatas.prices[0][product.varient]
-              console.log(product);
               newCart.push(product)
           }
           setCart(newCart)
@@ -63,9 +62,7 @@ const OrderScreen = () => {
                             <th colSpan={1}>PRIX UNITAIRE</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            {
-                                    console.log(cart)}        
+                        <tbody>   
                             { cart.map ( (pizza, i) => (
                                 <tr md={4}  key={i}  >
                                     <td>{pizza.name}</td>
@@ -95,9 +92,9 @@ const OrderScreen = () => {
 
             </Row>
             <Row>
-                <Col >
+                <Col className="paypal">
                     <h4>Paiement</h4>
-                    <Payment />
+                    {total ? <Payment total={total}/> : ''}
                 </Col>
 
             </Row>

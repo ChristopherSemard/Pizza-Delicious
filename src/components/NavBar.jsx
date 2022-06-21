@@ -1,8 +1,21 @@
 import React from 'react'
 import { Container, Nav, Navbar, Image } from "react-bootstrap";
 import { LinkContainer } from 'react-router-bootstrap';
+import { useNavigate } from "react-router-dom";
+import useAuth from "../context/useAuth";
 
 const NavBar = () => {
+  const { auth, setAuth } = useAuth();
+
+  let navigate = useNavigate()
+  console.log(auth);
+  const handleLogout = () => {
+    setAuth('');
+    navigate("/", {replace:true})
+  }
+
+
+
   return (
     <>
     <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
@@ -13,9 +26,13 @@ const NavBar = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="ms-auto">
-            <LinkContainer to="/login">
+
+            {
+              auth?._id ? 
+              <Nav.Link onClick={handleLogout}>Logout</Nav.Link> :             <LinkContainer to="/login">
                 <Nav.Link>Login</Nav.Link>
             </LinkContainer>
+            }
             <LinkContainer to="/cart">
                 <Nav.Link>Cart</Nav.Link>
             </LinkContainer>

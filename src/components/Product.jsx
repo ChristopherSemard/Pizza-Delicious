@@ -25,7 +25,7 @@ function Product(props) {
     
 const deleteProduct = (event) => {
     let target = event.target
-    if (target.childNodes.length == 0){
+    if (target.childNodes.length === 0){
       target = event.target.parentNode
     }
     let actualCart = JSON.parse(localStorage.getItem('cart'))
