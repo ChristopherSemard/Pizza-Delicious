@@ -24,7 +24,6 @@ function Payment(props) {
         });
     };
     const onApprove = async (data, actions) => {
-        console.log(data);
         const createOrder = async () => {
             let response = await axios.post(
                 "http://localhost:8080/orders/add",
@@ -48,7 +47,6 @@ function Payment(props) {
         };
 
         let orderInfos = await createOrder();
-        console.log(orderInfos);
         navigate("/Confirmation", { state: orderInfos });
         return actions.order.capture();
     };

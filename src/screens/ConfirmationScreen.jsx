@@ -11,7 +11,7 @@ const ConfirmationScreen = () => {
 
     return (
         <>
-            <Container style={{ marginTop: "50px" }}>
+            <Container style={{ marginTop: "50px", marginBottom: "50px" }}>
                 <h1>Merci pour votre commande !</h1>
                 <p>
                     Montant payé : {state.amountPayed} € (Paypal)
@@ -53,6 +53,8 @@ const ConfirmationScreen = () => {
                         ))}
                     </tbody>
                 </Table>
+
+                <h1 className="text-center">A bientot !</h1>
             </Container>
         </>
     );

@@ -49,7 +49,7 @@ const Cart = () => {
 
     return (
         <>
-            <Container style={{ marginTop: "50px" }}>
+            <Container style={{ marginTop: "50px", marginBottom: "50px" }}>
                 <h1>Panier</h1>
                 {cart.length > 0 ? (
                     <>
@@ -64,17 +64,17 @@ const Cart = () => {
                                 </Col>
                             ))}
                         </Row>
-                        <Row>
-                            <h3 className="fw-bold">
-                                Total à payer : {total} €
-                            </h3>
-                        </Row>
-                        <Row>
-                            <LinkContainer to="/order">
-                                <Button className="bg-primary text-light mt-3">
-                                    Order
-                                </Button>
-                            </LinkContainer>
+                        <Row className="display-flex align-center">
+                            <Col className="mt-4 d-flex align-center justify-content-end gap-4">
+                                <h3 className="fw-bold mb-0">
+                                    Total à payer : {total} €
+                                </h3>
+                                <LinkContainer to="/order">
+                                    <Button className="bg-primary text-light w-25">
+                                        Commander
+                                    </Button>
+                                </LinkContainer>
+                            </Col>
                         </Row>
                     </>
                 ) : (

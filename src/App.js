@@ -26,9 +26,12 @@ function App() {
                 <Route path="/Login" element={<Login />} />
 
                 {/* <Route path="/Order" element={<OrderScreen />} /> */}
-                <Route path="/Confirmation" element={<ConfirmationScreen />} />
                 <Route element={<RequireAuth />}>
                     <Route path="/Order" element={<OrderScreen />} />
+                    <Route
+                        path="/Confirmation"
+                        element={<ConfirmationScreen />}
+                    />
                 </Route>
             </Routes>
         </BrowserRouter>
