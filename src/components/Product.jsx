@@ -23,16 +23,11 @@ function Product(props) {
     }
 
     
-const deleteProduct = (event) => {
-    let target = event.target
-    if (target.childNodes.length === 0){
-      target = event.target.parentNode
-    }
+const deleteProduct = () => {
     let actualCart = JSON.parse(localStorage.getItem('cart'))
     const productToDelete = actualCart.find(
-        product => product.name === target.dataset.pizza && product.varient === target.dataset.varient
-    );
-    console.log(productToDelete);        
+        product => product.name === props.product.name && product.varient === props.product.varient
+    );      
     const newCart = actualCart.filter(
         product => product !== productToDelete
     );
@@ -68,7 +63,7 @@ const deleteProduct = (event) => {
                         <option  key={i} value={i+1}>{i+1}</option>
                     ))}
                 </Form.Select>
-                    <Button variant="danger" data-pizza={props.product.name} data-varient={props.product.varient} onClick={event => deleteProduct(event)}><BsFillTrashFill data-pizza={props.product.name} data-varient={props.product.varient} /></Button>
+                    <Button variant="danger" onClick={event => deleteProduct(event)}><BsFillTrashFill  /></Button>
 
                 <Card.Text>
                     {infosPizza.prices ? infosPizza.prices[0][props.product.varient] * quantity+ " €" : '' }

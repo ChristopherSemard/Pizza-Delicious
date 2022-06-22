@@ -10,6 +10,7 @@ import CartScreen from "./screens/CartScreen";
 import Login from "./components/Login";
 import OrderScreen from "./screens/OrderScreen";
 import RequireAuth from "./components/RequireAuth";
+import ConfirmationScreen from "./screens/ConfirmationScreen";
 
 function App() {
     return (
@@ -24,10 +25,11 @@ function App() {
                 <Route path="/Cart" element={<CartScreen />} />
                 <Route path="/Login" element={<Login />} />
 
-                <Route path="/Order" element={<OrderScreen />} />
-                {/* <Route element={<RequireAuth />}>
+                {/* <Route path="/Order" element={<OrderScreen />} /> */}
+                <Route path="/Confirmation" element={<ConfirmationScreen />} />
+                <Route element={<RequireAuth />}>
                     <Route path="/Order" element={<OrderScreen />} />
-                </Route> */}
+                </Route>
             </Routes>
         </BrowserRouter>
     );

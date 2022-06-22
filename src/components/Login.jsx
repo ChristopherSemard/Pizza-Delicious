@@ -7,7 +7,7 @@ import useAuth from "../context/useAuth";
 
 const Login = () => {
   let navigate = useNavigate();
-  const { setAuth } = useAuth();
+  const {setAuth } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(false);

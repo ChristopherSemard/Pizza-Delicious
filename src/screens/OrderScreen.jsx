@@ -2,9 +2,12 @@ import React, {useEffect, useState} from 'react'
 import { Container, Row, Col, Table } from "react-bootstrap";
 import axios from 'axios';
 import Payment from '../components/Payment';
+import useAuth from "../context/useAuth";
 
 const OrderScreen = () => {
 
+
+    const { auth, setAuth } = useAuth();
     const[infosPizzas, setInfosPizzas] = useState([])
     const[cart, setCart] = useState([]);
     const[total, setTotal] = useState(null);
@@ -48,14 +51,12 @@ const OrderScreen = () => {
     <>
     <Container style={{marginTop : '50px'}}>
             <h1>Votre commande</h1>
-            <Row>
+            <Row style={{marginTop : '30px'}}>
                 <Col md={6}>
 
+                    <h4>Récapitulatif de la commande</h4>
                     <Table striped bordered hover className='text-center' >
                         <thead>
-                            <tr  className='bg-warning'>
-                            <th colSpan={3}>-- Récapitulatif --</th>
-                            </tr>
                             <tr>
                             <th colSpan={1}>NOM</th>
                             <th colSpan={1}>QUANTITE</th>
@@ -84,17 +85,19 @@ const OrderScreen = () => {
 
                 <Col md={6}>
                     <h4>Adresse de livraison</h4>
-                    <p>Véronique-Brigitte Roche<br/>
-                        37 Rue de Berne<br/>
-                    75008 Paris<br/>
-                    Tél : 01 43 87 08 92</p>
+                    <p>
+                        {auth?.firstname+' '+auth?.lastname}<br/>
+                        {auth?.address?.street}<br/>
+                    {auth?.address?.zip+' '+auth?.address?.city}<br/>
+                    Tél : {auth?.phone}
+                    </p>
                 </Col>
 
             </Row>
             <Row>
-                <Col className="paypal">
+                <Col md={6} className="paypal">
                     <h4>Paiement</h4>
-                    {total ? <Payment total={total}/> : ''}
+                    {total ? <Payment total={total} cart={cart}/> : ''}
                 </Col>
 
             </Row>
