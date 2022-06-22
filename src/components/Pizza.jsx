@@ -43,7 +43,7 @@ const Pizza = (props) => {
 
     return (
         <>
-            <Card className="mt-5" style={{ width: "18rem" }}>
+            <Card style={{ width: "18rem" }}>
                 <Card.Img variant="top" src={props.lapizza.image} />
                 <Card.Body>
                     <Card.Title className="mb-3">

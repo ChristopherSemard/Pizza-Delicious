@@ -55,7 +55,7 @@ const Cart = () => {
                     <>
                         <Row>
                             {cart.map((product, i) => (
-                                <Col md={12} key={i} className="mt-2">
+                                <Col key={i} className="mt-2">
                                     <Product
                                         handleClick={handleClick}
                                         trigger={trigger}
@@ -64,13 +64,13 @@ const Cart = () => {
                                 </Col>
                             ))}
                         </Row>
-                        <Row className="display-flex align-center">
-                            <Col className="mt-4 d-flex align-center justify-content-end gap-4">
+                        <Row className="display-flex">
+                            <Col className="mt-4 d-flex align-items-center justify-content-end gap-4">
                                 <h3 className="fw-bold mb-0">
                                     Total à payer : {total} €
                                 </h3>
                                 <LinkContainer to="/order">
-                                    <Button className="bg-primary text-light w-25">
+                                    <Button className="bg-primary text-light ">
                                         Commander
                                     </Button>
                                 </LinkContainer>

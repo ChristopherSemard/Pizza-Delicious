@@ -55,41 +55,42 @@ function Product(props) {
                     className="w-25"
                     variant="left"
                     src={infosPizza.image}
+                    style={{ objectFit: "cover" }}
                 />
-                <Card.Body className="w-50">
-                    <Card.Title>
+                <Card.Body className="w-75 d-lg-flex flex-lg-row justify-content-lg-between">
+                    <Card.Title className="mb-4">
                         {props.product.name + " - " + props.product.varient}
                     </Card.Title>
-                    <Card.Text>{infosPizza.description}</Card.Text>
-                </Card.Body>
-                <Card.Body>
-                    <div className="d-flex gap-2">
-                        <Form.Select
-                            aria-label="Default select example"
-                            value={quantity}
-                            onChange={(e) => updateProduct(e.target.value)}
-                        >
-                            {[...Array(10).keys()].map((v, i) => (
-                                <option key={i} value={i + 1}>
-                                    {i + 1}
-                                </option>
-                            ))}
-                        </Form.Select>
-                        <Button
-                            variant="danger"
-                            onClick={(event) => deleteProduct(event)}
-                        >
-                            <BsFillTrashFill />
-                        </Button>
+
+                    <div className="d-flex gap-2 align-items-center align-items-lg-end justify-content-between flex-md-column">
+                        <div className="d-flex gap-2">
+                            <Form.Select
+                                aria-label="Default select example"
+                                value={quantity}
+                                onChange={(e) => updateProduct(e.target.value)}
+                            >
+                                {[...Array(10).keys()].map((v, i) => (
+                                    <option key={i} value={i + 1}>
+                                        {i + 1}
+                                    </option>
+                                ))}
+                            </Form.Select>
+                            <Button
+                                variant="danger"
+                                onClick={(event) => deleteProduct(event)}
+                            >
+                                <BsFillTrashFill />
+                            </Button>
+                        </div>
+                        <Card.Text className=" d-flex justify-content-end fs-5">
+                            {infosPizza.prices
+                                ? "Prix : " +
+                                  infosPizza.prices[0][props.product.varient] *
+                                      quantity +
+                                  " €"
+                                : ""}
+                        </Card.Text>
                     </div>
-                    <Card.Text className=" d-flex justify-content-end fs-5 mt-3">
-                        {infosPizza.prices
-                            ? "Prix : " +
-                              infosPizza.prices[0][props.product.varient] *
-                                  quantity +
-                              " €"
-                            : ""}
-                    </Card.Text>
                 </Card.Body>
             </Card>
         </>
