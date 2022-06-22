@@ -40,6 +40,28 @@ router.post("/connect", function (req, res) {
 });
 
 /* GET users listing. */
+router.get("/:email", function (req, res) {
+    var db = req.db;
+    var userToFind = req.params.email;
+    var collection = db.get("users");
+    collection.findOne({ email: userToFind }, {}, function (e, docs) {
+        console.log(docs);
+        if (!docs) {
+            res.json({
+                code: 404,
+                message: "User doesn't exists",
+            });
+            return;
+        } else {
+            res.json({
+                code: 200,
+                message: "User exists.",
+            });
+        }
+    });
+});
+
+/* GET users listing. */
 router.post("/update", function (req, res) {
     var db = req.db;
 
@@ -74,4 +96,26 @@ router.post("/update", function (req, res) {
         }
     );
 });
+
+/* GET users listing. */
+router.post("/add", function (req, res) {
+    var db = req.db;
+
+    var collection = db.get("users");
+    bcrypt.hash(req.body.password, 5, function (err, hash) {
+        req.body.password = hash;
+        collection.insert(req.body, function (err, doc) {
+            if (err) {
+                res.send("ERROR ADD");
+            } else {
+                res.json({
+                    code: 200,
+                    message: "User created.",
+                    data: doc[0],
+                });
+            }
+        });
+    });
+});
+
 module.exports = router;
