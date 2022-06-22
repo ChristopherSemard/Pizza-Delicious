@@ -45,7 +45,6 @@ router.get("/:email", function (req, res) {
     var userToFind = req.params.email;
     var collection = db.get("users");
     collection.findOne({ email: userToFind }, {}, function (e, docs) {
-        console.log(docs);
         if (!docs) {
             res.json({
                 code: 404,
