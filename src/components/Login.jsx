@@ -51,7 +51,7 @@ const Login = () => {
 
     return (
         <>
-            <Container style={{ marginTop: "50px" }}>
+            <Container style={{ marginTop: "50px", marginBottom: "50px" }}>
                 <h1>CONNEXION</h1>
 
                 <Form onSubmit={handleSubmit}>

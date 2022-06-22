@@ -1,0 +1,29 @@
+[{
+  "_id": {
+    "$oid": "62b18958589f738c3c59714a"
+  },
+  "email": "salut@salut.fr",
+  "password": "$2b$05$S0dUO3hs41vMBCPW3m0ShO3ISQYkdmXrZxkFm3x.J.2KItibT.ubG",
+  "firstname": "Véronique-Brigitte",
+  "lastname": "Roche",
+  "phone": "0143870892",
+  "address": {
+    "street": "37 Rue de Berne",
+    "zip": "76000",
+    "city": "Paris"
+  }
+},{
+  "_id": {
+    "$oid": "62b189cb589f738c3c59714b"
+  },
+  "email": "bonjour@bonjour.fr",
+  "password": "$2b$05$S0dUO3hs41vMBCPW3m0ShO3ISQYkdmXrZxkFm3x.J.2KItibT.ubG",
+  "firstname": "Véronique-Brigitte",
+  "lastname": "Roche",
+  "phone": "0143870892",
+  "address": {
+    "street": "37 Rue de Berne",
+    "zip": "75008",
+    "city": "Paris"
+  }
+}]

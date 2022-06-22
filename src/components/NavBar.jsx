@@ -32,9 +32,14 @@ const NavBar = () => {
                                     Deconnexion
                                 </Nav.Link>
                             ) : (
-                                <LinkContainer to="/login">
-                                    <Nav.Link>Connexion</Nav.Link>
-                                </LinkContainer>
+                                <>
+                                    <LinkContainer to="/login">
+                                        <Nav.Link>Connexion</Nav.Link>
+                                    </LinkContainer>
+                                    <LinkContainer to="/signin">
+                                        <Nav.Link>Inscription</Nav.Link>
+                                    </LinkContainer>
+                                </>
                             )}
                             <LinkContainer to="/cart">
                                 <Nav.Link>Panier</Nav.Link>

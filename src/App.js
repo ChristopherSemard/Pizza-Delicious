@@ -8,6 +8,7 @@ import NavBar from "./components/NavBar";
 import HomeScreen from "./screens/HomeScreen";
 import CartScreen from "./screens/CartScreen";
 import Login from "./components/Login";
+import Signin from "./components/Signin";
 import OrderScreen from "./screens/OrderScreen";
 import RequireAuth from "./components/RequireAuth";
 import ConfirmationScreen from "./screens/ConfirmationScreen";
@@ -24,6 +25,7 @@ function App() {
                 <Route path="/Policy" element={<Policy />} />
                 <Route path="/Cart" element={<CartScreen />} />
                 <Route path="/Login" element={<Login />} />
+                <Route path="/Signin" element={<Signin />} />
 
                 {/* <Route path="/Order" element={<OrderScreen />} /> */}
                 <Route element={<RequireAuth />}>
