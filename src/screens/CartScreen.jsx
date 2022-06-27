@@ -55,13 +55,13 @@ const Cart = () => {
                     <>
                         <Row>
                             {cart.map((product, i) => (
-                                <Col key={i} className="mt-2">
-                                    <Product
-                                        handleClick={handleClick}
-                                        trigger={trigger}
-                                        product={product}
-                                    />
-                                </Col>
+                                <Product
+                                    key={i}
+                                    className="mt-2"
+                                    handleClick={handleClick}
+                                    trigger={trigger}
+                                    product={product}
+                                />
                             ))}
                         </Row>
                         <Row className="display-flex">

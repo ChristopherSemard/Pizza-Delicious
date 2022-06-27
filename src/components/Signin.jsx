@@ -16,7 +16,7 @@ import useAuth from "../context/useAuth";
 const Signin = () => {
     let navigate = useNavigate();
     const { state } = useLocation();
-    const { setAuth } = useAuth();
+    const { auth, setAuth } = useAuth();
     const [email, setEmail] = useState("salut@salut.fr");
     const [phone, setPhone] = useState("0235789654");
     const [firstname, setFirstname] = useState("Roger");
@@ -34,35 +34,30 @@ const Signin = () => {
 
         // Test email
         if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
-            console.log("EMAIL PAS BON");
             setError(true);
             setErrorMsg("Veuillez renseigner un email valide");
             return;
         }
         // Test téléphone
         else if (!/^[0-9]+$/.test(phone)) {
-            console.log("TELEPHONE PAS BON");
             setError(true);
             setErrorMsg("Veuillez renseigner un téléphone valide");
             return;
         }
         // Test prénom
         else if (firstname.length < 1) {
-            console.log("PRENOM PAS BON");
             setError(true);
             setErrorMsg("Veuillez renseigner un prénom valide");
             return;
         }
         // Test nom
         else if (lastname.length < 1) {
-            console.log("NOM PAS BON");
             setError(true);
             setErrorMsg("Veuillez renseigner un nom valide");
             return;
         }
         // Test regex mot de passe
         else if (!/^[0-9]+$/.test(password)) {
-            console.log("PASSWORD PAS BON");
             setError(true);
             setErrorMsg(
                 "Le mot de passe ne remplit pas toutes les critères nécessaires"
@@ -71,28 +66,24 @@ const Signin = () => {
         }
         // Test confirmation mot de passe
         else if (password != confirmPassword) {
-            console.log("CONFIRMATION PASSWORD PAS BON");
             setError(true);
             setErrorMsg("Les mots de passe ne correspondent pas");
             return;
         }
         // Test rue
         else if (street.length < 1) {
-            console.log("RUE PAS BON");
             setError(true);
             setErrorMsg("Veuillez renseigner un numéro et nom de rue valide");
             return;
         }
         // Test ville
         else if (city.length < 1) {
-            console.log("VILLE PAS BON");
             setError(true);
             setErrorMsg("Veuillez renseigner une ville valide");
             return;
         }
         // Test ville
         else if (zip.length < 1) {
-            console.log("CODE POSTAL PAS BON");
             setError(true);
             setErrorMsg("Veuillez renseigner un code postal valide");
             return;
@@ -101,9 +92,7 @@ const Signin = () => {
         const getAlreadyExists = await axios(
             "http://localhost:8080/users/" + email
         );
-        console.log(getAlreadyExists);
         if (getAlreadyExists.data.code == 200) {
-            console.log("EXISTE DEJA");
             setError(true);
             setErrorMsg("Cet email possède déjà un compte");
             return;
@@ -130,11 +119,8 @@ const Signin = () => {
                     },
                 }
             );
-
-            navigate("/", { replace: true });
-
             setAuth(response.data.data);
-            console.log(response.data.data);
+            navigate("/", { replace: true });
         } catch (err) {
             console.log(err.response);
         }

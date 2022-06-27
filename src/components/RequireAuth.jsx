@@ -5,7 +5,6 @@ import { useLocation } from "react-router-dom";
 const RequireAuth = () => {
     const { auth } = useAuth();
     const { pathname } = useLocation();
-    console.log(pathname);
     return auth?._id && pathname != "/Confirmation" ? (
         <Outlet />
     ) : pathname == "/order" ? (

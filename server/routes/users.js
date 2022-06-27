@@ -86,6 +86,7 @@ router.post("/update", function (req, res) {
                 res.send("ERROR UPDATE");
                 console.log(err);
             } else {
+                delete doc[0].password;
                 res.json({
                     code: 200,
                     message: "User connected.",
@@ -107,10 +108,11 @@ router.post("/add", function (req, res) {
             if (err) {
                 res.send("ERROR ADD");
             } else {
+                delete doc.password;
                 res.json({
                     code: 200,
                     message: "User created.",
-                    data: doc[0],
+                    data: doc,
                 });
             }
         });

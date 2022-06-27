@@ -50,7 +50,7 @@ function Product(props) {
 
     return (
         <>
-            <Card className="flex-row w-100">
+            <Card className="flex-row w-100 mt-2">
                 <Card.Img
                     className="w-25"
                     variant="left"

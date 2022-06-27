@@ -35,7 +35,6 @@ const OrderScreen = () => {
         newAuth.address.street = street;
         newAuth.address.zip = zip;
         newAuth.address.city = city;
-        console.log(newAuth);
         if (checked) {
             try {
                 let response = await axios.post(
