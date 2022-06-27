@@ -91,8 +91,7 @@ const Pizza = (props) => {
                     <Row className="mt-2">
                         <Col md={6} className="d-flex align-items-center fs-5">
                             <p className="mb-0">
-                                Prix :{" "}
-                                {props.lapizza.prices[0][taille] * quantite} €
+                                Prix : {props.lapizza.prices[0][taille]} €
                             </p>
                         </Col>
                         <Col md={6}>

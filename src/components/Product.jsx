@@ -44,6 +44,7 @@ function Product(props) {
                 "http://localhost:8080/pizzas/" + props.product.name
             );
             setInfosPizza(getPizzaData.data);
+            setQuantity(props.product.quantity);
         };
         getPizza();
     }, [props]);
