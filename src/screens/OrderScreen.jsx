@@ -151,7 +151,7 @@ const OrderScreen = () => {
                             Tél : {auth?.phone}
                         </p>
                         <Button
-                            className="bg-primary text-light mt-3 w-50"
+                            className="bg-primary text-light  w-50"
                             onClick={handleShow}
                         >
                             Modifier l'adresse
@@ -159,7 +159,7 @@ const OrderScreen = () => {
                     </Col>
                 </Row>
                 <Row>
-                    <Col md={6} className="paypal">
+                    <Col md={6} className="paypal mt-4">
                         <h4>Paiement</h4>
                         {total ? <Payment total={total} cart={cart} /> : ""}
                     </Col>
@@ -208,7 +208,7 @@ const OrderScreen = () => {
                         >
                             <Form.Check
                                 type="checkbox"
-                                label="Changer l'addresse pour mes prochaines commandes"
+                                label="Changer l'adresse pour mes prochaines commandes"
                                 onChange={(e) => setChecked(e.target.checked)}
                             />
                         </Form.Group>

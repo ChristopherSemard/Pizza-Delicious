@@ -86,7 +86,6 @@ router.post("/update", function (req, res) {
                 res.send("ERROR UPDATE");
                 console.log(err);
             } else {
-                delete doc[0].password;
                 res.json({
                     code: 200,
                     message: "User connected.",

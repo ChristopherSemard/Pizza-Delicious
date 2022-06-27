@@ -1,8 +1,9 @@
 import axios from "axios";
 import React from "react";
 import { useState } from "react";
-import { Container, Form, Button, Alert } from "react-bootstrap";
+import { Container, Form, Button, Alert, Nav } from "react-bootstrap";
 import { useNavigate, useLocation } from "react-router-dom";
+import { LinkContainer } from "react-router-bootstrap";
 import useAuth from "../context/useAuth";
 
 const Login = () => {
@@ -81,6 +82,12 @@ const Login = () => {
                     <Button variant="primary" type="submit">
                         Valider
                     </Button>
+
+                    <LinkContainer to="/Signin">
+                        <Nav.Link className="p-0 py-2">
+                            Pas de compte ? Inscrivez vous
+                        </Nav.Link>
+                    </LinkContainer>
                 </Form>
                 {error ? (
                     <Alert variant="danger" style={{ marginTop: "20px" }}>
